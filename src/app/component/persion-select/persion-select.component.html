@@ -1,7 +1,13 @@
 <nz-input-group [nzSuffix]="suffixIconSearch">
-  <input type="text" nz-input placeholder="input search text" />
+  <input
+    nz-input
+    type="text"
+    [ngModel]="personValue"
+    (ngModelChange)="modelChange($event)"
+    placeholder="input search text"
+  />
 </nz-input-group>
 <ng-template #suffixIconSearch>
-  <span nz-icon nzType="plus-circle" nzTheme="outline"></span>
+  <!-- <span nz-icon nzType="plus-circle" nzTheme="outline"></span> -->
+  <span nz-icon nzType="search"></span>
 </ng-template>
-<span nz-icon nzType="plus-circle" nzTheme="outline"></span>

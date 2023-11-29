@@ -1,1 +1,27 @@
-<app-persion-select></app-persion-select>
+<form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+  <nz-form-item>
+    <nz-form-control nzErrorTip="Please input your username!">
+      <input formControlName="userName" nz-input placeholder="Username" />
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzSpan]="6" nzFor="person">person</nz-form-label>
+    <nz-form-control [nzSpan]="14">
+      <app-persion-select
+        formControlName="person"
+        placeholder="person"
+      ></app-persion-select>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-control>
+      <button nz-button nzType="primary" [disabled]="!validateForm.valid">
+        Log in
+      </button>
+    </nz-form-control>
+  </nz-form-item>
+</form>
+
+{{ validateForm.value | json }}
