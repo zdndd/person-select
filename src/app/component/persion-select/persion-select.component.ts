@@ -1,6 +1,7 @@
-import { Component, forwardRef } from '@angular/core';
+import { Component, forwardRef, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { map } from 'lodash';
 
 import {
   ReactiveFormsModule,
@@ -8,6 +9,7 @@ import {
   NG_VALUE_ACCESSOR,
 } from '@angular/forms';
 import { NzInputModule } from 'ng-zorro-antd/input';
+import { ExponentialStrengthPipe } from '../../pipe/valueString.pipe';
 
 @Component({
   selector: 'app-persion-select',
@@ -23,12 +25,13 @@ import { NzInputModule } from 'ng-zorro-antd/input';
     },
   ],
 })
-export class PersionSelectComponent implements ControlValueAccessor {
+export class PersionSelectComponent implements ControlValueAccessor, OnInit {
   _personValue: string | null = '';
   private _onChange = (_: any) => {};
   private _onTouched = (_: any) => {};
 
   modelChange(e: any) {
+    console.log('change', e);
     this.personValue = e;
   }
 
@@ -51,4 +54,8 @@ export class PersionSelectComponent implements ControlValueAccessor {
     this._onTouched = fn;
   }
   setDisabledState(isDisabled: boolean): void {}
+
+  ngOnInit() {
+    console.log(this.personValue);
+  }
 }

@@ -9,6 +9,8 @@ import {
   Validators,
 } from '@angular/forms';
 import { NzFormModule } from 'ng-zorro-antd/form';
+import { NzModalModule } from 'ng-zorro-antd/modal';
+import { NzModalRef, NzModalService, NZ_MODAL_DATA } from 'ng-zorro-antd/modal';
 
 import { PersionSelectComponent } from './component/persion-select/persion-select.component';
 
@@ -17,6 +19,7 @@ import { PersionSelectComponent } from './component/persion-select/persion-selec
   standalone: true,
   imports: [
     PersionSelectComponent,
+    NzModalModule,
     NzFormModule,
     ReactiveFormsModule,
     CommonModule,
@@ -38,5 +41,24 @@ export class AppComponent {
     console.log('submit', this.validateForm.value);
   }
 
-  constructor(private fb: NonNullableFormBuilder) {}
+  createModal(): void {
+    this.modal.create({
+      nzTitle: 'Modal Title',
+      nzContent: 'string, will close after 1 sec',
+      nzClosable: false,
+      nzOnOk: () => {
+        console.log(111);
+        const person: any = [
+          { value: 'della', id: '11' },
+          { value: 'you', id: '22' },
+        ];
+        this.validateForm.patchValue({ person: person });
+      },
+    });
+  }
+
+  constructor(
+    private fb: NonNullableFormBuilder,
+    private modal: NzModalService
+  ) {}
 }
