@@ -3,7 +3,7 @@
     readonly
     nz-input
     type="text"
-    [ngModel]="personValue"
+    [ngModel]="personValue | valueString"
     placeholder="input search text"
   />
 </nz-input-group>
@@ -11,4 +11,3 @@
   <!-- <span nz-icon nzType="plus-circle" nzTheme="outline"></span> -->
   <span nz-icon nzType="search"></span>
 </ng-template>
-{{ personValue | json }}

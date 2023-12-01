@@ -11,14 +11,13 @@ import {
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzModalRef, NzModalService, NZ_MODAL_DATA } from 'ng-zorro-antd/modal';
-
-import { PersionSelectComponent } from './component/persion-select/persion-select.component';
-
+import { ShareModule } from './component/share.module';
+import { personSelectComponent } from './component/person-select/person-select.component';
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
-    PersionSelectComponent,
+    ShareModule,
     NzModalModule,
     NzFormModule,
     ReactiveFormsModule,
@@ -47,7 +46,6 @@ export class AppComponent {
       nzContent: 'string, will close after 1 sec',
       nzClosable: false,
       nzOnOk: () => {
-        console.log(111);
         const person: any = [
           { value: 'della', id: '11' },
           { value: 'you', id: '22' },

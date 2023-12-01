@@ -1,4 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import { map } from 'lodash';
+
 /*
  * Raise the value exponentially
  * Takes an exponent argument that defaults to 1.
@@ -8,9 +10,9 @@ import { Pipe, PipeTransform } from '@angular/core';
  *   {{ 2 | exponentialStrength:10 }}
  *   formats to: 1024
  */
-@Pipe({ name: 'exponentialStrength' })
+@Pipe({ name: 'valueString' })
 export class ExponentialStrengthPipe implements PipeTransform {
-  transform(value: number, exponent = 1): number {
-    return Math.pow(value, exponent);
+  transform(arr: any): any {
+    return map(arr, 'value');
   }
 }

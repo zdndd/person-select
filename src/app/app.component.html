@@ -8,11 +8,16 @@
   <nz-form-item>
     <nz-form-label [nzSpan]="6" nzFor="person">person</nz-form-label>
     <nz-form-control [nzSpan]="14">
-      <app-persion-select
+      <!-- <app-persion-select
         formControlName="person"
         placeholder="person"
         (click)="createModal()"
-      ></app-persion-select>
+      ></app-persion-select> -->
+      <app-person-select
+        formControlName="person"
+        placeholder="person"
+        (click)="createModal()"
+      ></app-person-select>
     </nz-form-control>
   </nz-form-item>
 
